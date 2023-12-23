@@ -45,7 +45,6 @@ class DynamicLink {
             String? friendid = deepLink!.queryParameters['friendid'];
             kakao.User? user = await kakao.UserApi.instance.me();
             //print('다이나믹 링크로 열린 후, userid ${friendid}');
-            print('===================');
             FriendListManager().addFriendList(
                 context, friendid!, user.id.toString());
           }
