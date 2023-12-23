@@ -132,7 +132,7 @@ class _MyProfileState extends State<MyProfile> {
   Widget nameTextField() {
     return TextFormField(
       controller: _nameController,
-      maxLength: 10,
+      maxLength: 5,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderSide: BorderSide(
@@ -161,7 +161,7 @@ class _MyProfileState extends State<MyProfile> {
   Widget introduction() {
     return TextFormField(
       controller: _introController,
-      maxLength: 20,
+      maxLength: 10,
       decoration: InputDecoration(
         hintText: 'introduction',
       ),

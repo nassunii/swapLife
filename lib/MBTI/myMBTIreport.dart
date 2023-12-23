@@ -39,7 +39,8 @@ class myMBTIreportState extends State<myMBTIreport> {
           String item = mbtilist[index];
 
           return ListTile(
-          title: Text(item),
+            leading: Icon(Icons.ac_unit, size: 17,),
+            title: Text(item, style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                   );
                 },
                 );

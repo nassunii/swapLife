@@ -7,17 +7,12 @@ import 'package:swap_life/kakao_login/myhompage.dart';
 import 'dart:core';
 import 'MyProfile.dart';
 import 'TodoScreen.dart';
-import 'firestore/service.dart';
-import 'shared/shared.dart';
-import 'package:swap_life/shared/todo_controller.dart';
 import 'package:swap_life/friends/dynamicLink.dart';
 import 'package:swap_life/Body/friendBody.dart';
 import 'package:swap_life/MBTI/myMBTIreport.dart';
 
 
 void main() async{
-  var services = HttpServices();
-  var controller = TodoController(services);
   KakaoSdk.init(
       nativeAppKey: 'e7a7bba0f8d93f336d1343d3f47222ae',
       javaScriptAppKey: 'dc58af574c1d9b2e8e2a27485a830ecf14f59171');
@@ -26,26 +21,23 @@ void main() async{
     options : DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(MyApp(controller: controller,));
+  runApp(MyApp());
 }
 
 //MyApp class 예선 작성//
 class MyApp extends StatelessWidget {
-  final TodoController controller;
-  MyApp({required this.controller,});
-
   @override
   Widget build(BuildContext context) {
-    DynamicLink(controller, context).initDynamicLink(context);
+    DynamicLink(context).initDynamicLink(context);
     return MaterialApp(
       title: 'Swap Life',
       theme: ThemeData(primaryColor: Colors.blueGrey[200]),
       initialRoute: '/',
       routes: {
-        '/': (context) => MyHomePage(controller: controller),
-        '/myHome': (context) => MyHome(controller: controller),
+        '/': (context) => MyHomePage(),
+        '/myHome': (context) => MyHome(),
         '/myProfile' : (context) => MyProfile(),
-        '/todoScreen': (context) => TodoScreen(controller: controller),
+        '/todoScreen': (context) => TodoScreen(),
         '/alert_dialog': (context) => AlertFriendDialog(),
         '/myMBTIreport' : (context) => myMBTIreport(),
         //'/friendScreen': (context) => FriendPage(friendChecklist: friendChecklist),
@@ -57,9 +49,6 @@ class MyApp extends StatelessWidget {
 
 //MyHome, _MyHomeState class 예선 작성//
 class MyHome extends StatefulWidget {
-  final TodoController controller;
-  MyHome({required this.controller});
-
   @override
   _MyHomeState createState() => _MyHomeState();
 }
@@ -72,7 +61,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     //앱 초기 실행시 프로필로 바꿨을 때 tabcontroller도 바꿔줌(예원)
-    if (widget.controller != null) {
+    //if (widget.controller != null) {
       _tabController = TabController(length: 3, vsync: this);
       _tabController!.index = 2;
       _tabController!.addListener(() {
@@ -80,7 +69,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           _selectedIndex = _tabController!.index;
         });
       });
-    }
+    //}
   }
 
   @override
@@ -94,10 +83,10 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
     Widget bodyWidget;
     if(_selectedIndex==0) {
       //추후 친구 chech list받아오는 함수 연결
-      bodyWidget = friendBody(controller:widget.controller,friendChecklist: [], friendName: '', friendid: '',);
+      bodyWidget = friendBody(friendChecklist: [], friendName: '', friendid: '',);
       //bodyWidget = FriendPage(friendChecklist: [], friendName: '');
     } else if(_selectedIndex == 1) {
-      bodyWidget = TodoScreen(controller: widget.controller);
+      bodyWidget = TodoScreen();
     } else {
       bodyWidget = MyProfile();
     }

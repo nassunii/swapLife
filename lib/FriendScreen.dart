@@ -2,17 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 import 'package:swap_life/MBTI/report.dart';
-import 'dart:core';
-import 'package:swap_life/shared/todo_controller.dart';
 
 class FriendPage extends StatefulWidget {
   final List<String>? friendChecklist;
   final String? friendName;
-  final TodoController controller;
   final String friendid;
 
   FriendPage({
-    required this.controller,
     required this.friendChecklist,
     required this.friendName,
     required this.friendid,

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
-import 'package:swap_life/shared/todo_controller.dart';
 import 'package:swap_life/friends/friendList.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
@@ -21,8 +20,6 @@ class TodoItem {
 }
 
 class TodoScreen extends StatefulWidget {
-  final TodoController controller;
-  TodoScreen({required this.controller});
   @override
   _TodoScreenState createState() => _TodoScreenState();
 }
@@ -51,7 +48,7 @@ class _TodoScreenState extends State<TodoScreen> {
       body: Column(
         children: [
           SizedBox(height: 10),
-          FriendList(widget.controller, context),
+          FriendList( context),
           SizedBox(height: 25),
           //checkList
           Text("< My CheckList >", style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold),),
