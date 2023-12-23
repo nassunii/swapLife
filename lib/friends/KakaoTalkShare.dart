@@ -5,7 +5,7 @@ import 'log.dart';
 import 'dynamicLink.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
-
+//전체 class 예원 구현
 const String tag = 'SwapLife';
 kakao.User ? user;
 

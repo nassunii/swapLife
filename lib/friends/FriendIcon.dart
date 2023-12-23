@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//전체 class 예원 구현
 class FriendIcon extends StatelessWidget {
   final String? imageUrl;
   final String? NickName;

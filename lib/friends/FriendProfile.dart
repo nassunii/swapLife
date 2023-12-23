@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:swap_life/friends/deleteFriendDialog.dart';
 import 'package:swap_life/Body/friendBody.dart';
 
+//전체 class 예선 작성
+//variable연결 - 예원
 class FriendProfile extends StatefulWidget {
   late String? imageUrl;
   late String? NickName;

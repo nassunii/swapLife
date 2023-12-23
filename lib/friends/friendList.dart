@@ -6,8 +6,7 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 import 'package:swap_life/friends/deleteFriendDialog.dart';
 import 'package:swap_life/friends/FriendProfile.dart';
 
-
-
+//전체 class 예원 구현
 class FriendList extends StatefulWidget {
   late BuildContext context;
   FriendList(BuildContext context){
@@ -106,19 +105,6 @@ class _FriendListState extends State<FriendList> {
             return returnContainer([Container()],widget.context);
           }else{
             friendIconList = snapshot.data;
-            // Future.delayed(Duration.zero, (){
-            //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('되지롱')));
-            // });
-
-
-            // Future.delayed(Duration.zero, (){
-            //   showDialog(context: context, builder: (context){
-            //     return AlertDialog(
-            //       content: Text('위젯'),
-            //     );
-            //   });
-            // });
-
 
             return returnContainer(friendIconList,  widget.context);
           }

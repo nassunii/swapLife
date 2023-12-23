@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 import 'package:swap_life/MBTI/report.dart';
 
+//전체 class 예선 구현
 class FriendPage extends StatefulWidget {
   final List<String>? friendChecklist;
   final String? friendName;
@@ -127,6 +128,8 @@ class FriendPageState extends State<FriendPage>
       ),
     );
   }
+
+  //Emoji state 김진영 구현
   @override
   void initState() {
     super.initState();

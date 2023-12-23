@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'AddFriend.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
-
+//전체 class 예원 구현
 class DynamicLink {
   late BuildContext context;
   bool isDynamicLinkListenerInitialized = false;

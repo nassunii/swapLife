@@ -5,6 +5,8 @@ import 'package:swap_life/main.dart';
 import 'package:swap_life/MyProfile.dart';
 import 'package:swap_life/TodoScreen.dart';
 
+//전체 class 예선 작성
+//Friend Tab 창 구현
 class friendBody extends StatefulWidget {
   final List<String> friendChecklist;
   final String? friendName;

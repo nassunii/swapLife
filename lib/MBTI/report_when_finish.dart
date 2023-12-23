@@ -1,8 +1,8 @@
-//김진영 작성
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swap_life/MBTI/calc_mbti.dart';
 
+//전체 class 진영 구현
 class calc_mbti extends StatefulWidget{
   final String friendid;
 

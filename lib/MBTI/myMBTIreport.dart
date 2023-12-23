@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
+//class 틀 예선 구현
+//전체 class 진영 구현
 class myMBTIreport extends StatefulWidget{
   @override
   myMBTIreportState createState() => myMBTIreportState();

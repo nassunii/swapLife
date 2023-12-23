@@ -24,7 +24,7 @@ void main() async{
   runApp(MyApp());
 }
 
-//MyApp class 예선 작성//
+//MyApp class 홍예선 작성//
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//MyHome, _MyHomeState class 예선 작성//
+//MyHome, _MyHomeState class 홍예선 작성//
 class MyHome extends StatefulWidget {
   @override
   _MyHomeState createState() => _MyHomeState();

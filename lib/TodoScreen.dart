@@ -4,7 +4,7 @@ import 'dart:core';
 import 'package:swap_life/friends/friendList.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
-//모든 class 예선 작성
+//전체 class 예선 작성
 List<TodoItem> todoList = [];
 
 //Todo list에 들어갈 항목,mbti,완료상태

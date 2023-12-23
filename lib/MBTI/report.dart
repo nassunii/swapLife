@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swap_life/MBTI/report_when_finish.dart';
 
+//전체 class 진영 구현
 class Mbti_report extends StatefulWidget {
   final String friendid;
   final String friendName;
