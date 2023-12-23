@@ -74,7 +74,6 @@ class _TodoScreenState extends State<TodoScreen> {
                           ),
                         ),
                       ),
-
                       onChanged: (value){}
                   ),
                 ),
@@ -181,6 +180,7 @@ class _TodoScreenState extends State<TodoScreen> {
       }
     });
   }
+
   //초기에 사용자ID=null 상황을 방지하기 위해 userId받아오는 함수
   Future<String> getOrCreateDefaultUserId() async {
     kakao.User? user = await kakao.UserApi.instance.me();
@@ -282,8 +282,6 @@ class _TodoScreenState extends State<TodoScreen> {
     });
   }
 }
-
-
 
 class DropdownButtonWidget extends StatefulWidget {
   @override

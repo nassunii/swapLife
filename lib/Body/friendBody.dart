@@ -36,6 +36,7 @@ class friendBodyState extends State<friendBody> {
   }
 }
 
+
 //친구 checklist가져왔을때의 Main화면 구성 -> 종료 버튼 누르면 원래 화면으로 돌아감
 class FriendMain extends StatefulWidget {
   final List<String> friendChecklist;

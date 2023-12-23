@@ -65,7 +65,6 @@ class _FriendProfile extends State<FriendProfile> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 20,),
             Row(
               children: [
                 SizedBox(width: 30,),
@@ -79,7 +78,7 @@ class _FriendProfile extends State<FriendProfile> {
                   radius: 70,
                   backgroundImage: NetworkImage(widget.imageUrl!),
                 ),
-                //SizedBox(width: 50,),
+                SizedBox(width: 30,),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

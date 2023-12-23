@@ -18,107 +18,111 @@ class FriendPage extends StatefulWidget {
   State<FriendPage> createState() => FriendPageState();
 }
 
-class FriendPageState extends State<FriendPage> {
-  List<TodoItem> todoList = []; // 변경된 부분: todoList 추가
+class FriendPageState extends State<FriendPage>
+    with AutomaticKeepAliveClientMixin<FriendPage> {
+  List<TodoItem> todoList = [];
   late Future<List<String>> mbti;
   Map<int, String> emojiMap = {};
   String mbtivalue = '';
   List<int> emojiValue = [];
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          if(todoList.length!=0) //get한 친구의 리스트가 있을 때
-          Text("<${widget.friendName} checkList>",
-              style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold)),
-          if(todoList.length!=0)
-          Text("친구의 일상을 경험하고, 완료사항을 체크해보세요"),
+          if(todoList.length != 0) //get한 친구의 리스트가 있을 때
+            Text("<${widget.friendName} checkList>",
+                style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold)),
+          if(todoList.length != 0)
+            Text("친구의 일상을 경험하고, 완료사항을 체크해보세요"),
           SizedBox(height: 25,),
-          if(todoList.length!=0)
-          Expanded(
-            child: ListView.builder(
-              itemCount: todoList.length,
-              itemBuilder: (context, index) => ListTile(
-                leading: Checkbox(
-                  activeColor: Colors.white,
-                  checkColor: Colors.deepPurple,
-                  value: todoList[index].isCompleted,
-                  onChanged: (value) {
-                    _toggleTodoItem(index);
-                  },
+          if(todoList.length != 0)
+            Expanded(
+              child: ListView.builder(
+                itemCount: todoList.length,
+                itemBuilder: (context, index) => ListTile(
+                  leading: Checkbox(
+                    activeColor: Colors.white,
+                    checkColor: Colors.deepPurple,
+                    value: todoList[index].isCompleted,
+                    onChanged: (value) {
+                      _toggleTodoItem(index);
+                    },
+                  ),
+                  title: Text(
+                    todoList[index].title,
+                  ),
+                  trailing: DropdownButton<String?>(
+                    value: emojiMap[index],
+                    items: [
+                      '😍',
+                      '😀',
+                      '😊',
+                      '😑',
+                      '😩'
+                    ].map((String emoji) {
+                      return DropdownMenuItem<String>(
+                        value: emoji,
+                        child: Text(
+                          emoji,
+                          style: TextStyle(fontSize: 24),
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (String? value) {
+                      setState(() {
+                        emojiMap[index] = value!;
+                      });
+                    },
+                  ),
                 ),
-                title: Text(
-                  todoList[index].title,
-                ),
-                trailing: DropdownButton<String?>(
-                  value: emojiMap[index],
-                  items: [
-                    '😍',
-                    '😀',
-                    '😊',
-                    '😑',
-                    '😩'
-                  ].map((String emoji) {
-                    return DropdownMenuItem<String>(
-                      value: emoji,
-                      child: Text(
-                        emoji,
-                        style: TextStyle(fontSize: 24),
+              ),
+            ),
+          if(todoList.length != 0)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 70.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  emojiToint(emojiMap.values.toList());
+                  print(emojiValue);
+                  saveAll();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder:
+                          (context) => Mbti_report(friendid: widget.friendid, friendName: widget.friendName!)));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10.0, 12.0, 10.0, 10.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.smart_toy_sharp),
+                      SizedBox(
+                        width: 40,
                       ),
-                    );
-                  }).toList(),
-                  onChanged: (String? value) {
-                    setState(() {
-                      emojiMap[index] = value!;
-                    });
-                  },
+                      Text('FINISH',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          if(todoList.length!=0)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 70.0),
-            child: ElevatedButton(
-              onPressed: () {
-                emojiToint(emojiMap.values.toList());
-                print(emojiValue);
-                saveAll();
-                Navigator.push(context,
-                    MaterialPageRoute(builder:
-                        (context)=> Mbti_report(friendid: widget.friendid, friendName:widget.friendName! )));
-              },
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10.0, 12.0, 10.0, 10.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.smart_toy_sharp),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    Text('FINISH',
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          if(todoList.length!=0)
+          if(todoList.length != 0)
             SizedBox(height: 50,),
-          if(todoList.length==0) //get한 친구의 리스트가 없을 때
+          if(todoList.length == 0) //get한 친구의 리스트가 없을 때
             Center(
-                child: Column(
-                  children: [
-                    SizedBox(height: 145,),
-                    Text("Friend's List", style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,),),
-                    SizedBox(height: 10,),
-                    Text("친구의 CheckList를 가져와 일상을 경험해보세요",style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,))
-                  ],
-                ),
+              child: Column(
+                children: [
+                  SizedBox(height: 145,),
+                  Text("Friend's List", style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,),),
+                  SizedBox(height: 10,),
+                  Text("친구의 CheckList를 가져와 일상을 경험해보세요",style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,))
+                ],
               ),
+            ),
         ],
       ),
     );
@@ -199,6 +203,8 @@ class FriendPageState extends State<FriendPage> {
           'intMBTI': emojiValue[i],
           'checklist': widget.friendChecklist?[i],
           'MBTI' : (await mbti)[i],
+          'isComplete': todoList[i].isCompleted,
+          'index': i,
         }
       };
 

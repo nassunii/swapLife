@@ -61,7 +61,6 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     //앱 초기 실행시 프로필로 바꿨을 때 tabcontroller도 바꿔줌(예원)
-    //if (widget.controller != null) {
       _tabController = TabController(length: 3, vsync: this);
       _tabController!.index = 2;
       _tabController!.addListener(() {
@@ -69,7 +68,6 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           _selectedIndex = _tabController!.index;
         });
       });
-    //}
   }
 
   @override
@@ -122,11 +120,8 @@ class BottomNavBar extends StatelessWidget {
   final TabController tabController;
   final int selectedIndex;
   final Function(int) onTabTapped;
-  BottomNavBar({
-    required this.tabController,
-    required this.selectedIndex,
-    required this.onTabTapped,
-  });
+  BottomNavBar({required this.tabController, required this.selectedIndex, required this.onTabTapped,});
+
   @override
   Widget build(BuildContext context) {
     return TabBar(

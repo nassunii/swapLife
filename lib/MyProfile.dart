@@ -78,7 +78,7 @@ class _MyProfileState extends State<MyProfile> {
           SizedBox(height: 30),
           nameTextField(),
           introduction(),
-          SizedBox(height: 40,),
+          SizedBox(height: 70,),
           chooseMBTI(),
           selectedMBTI(),
           if (_selectedMBTI == null)
@@ -96,6 +96,7 @@ class _MyProfileState extends State<MyProfile> {
     return Center(
       child: Stack(
         children: <Widget>[
+          //삼항연산자로, 초기에 profile사진 없을 때 오류 방지
           (_imageUrl == null || _imageUrl!.isEmpty)
               ? CircleAvatar(
             radius: 80,
@@ -150,14 +151,15 @@ class _MyProfileState extends State<MyProfile> {
         ),
         labelText: 'Name',
         hintText: 'Input your name',
-
       ),
+
       onFieldSubmitted: (value) {
         saveProfile();
       },
     );
   }
 
+  //한줄소개
   Widget introduction() {
     return TextFormField(
       controller: _introController,
@@ -208,6 +210,7 @@ class _MyProfileState extends State<MyProfile> {
         : Container(); // 선택된 MBTI가 없을 때는 빈 컨테이너 반환
   }
 
+  //MBTI 리포트 창으로 넘어가는 버튼
   Widget myReport() {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
