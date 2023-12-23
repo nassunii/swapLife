@@ -52,7 +52,7 @@ class _TodoScreenState extends State<TodoScreen> {
           SizedBox(height: 25),
           //checkList
           Text("< My CheckList >", style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold),),
-          Text("자신의 MBTI에 해당하는 CheckList를 모두 작성해보세요!",),
+          Text("자신의 MBTI가 드러나는 일상을 작성해보세요!",),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
