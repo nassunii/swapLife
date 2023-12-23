@@ -38,6 +38,7 @@ class friendBodyState extends State<friendBody> {
 
 
 //친구 checklist가져왔을때의 Main화면 구성 -> 종료 버튼 누르면 원래 화면으로 돌아감
+//body부분만 제외하면 기존의 main과 동일
 class FriendMain extends StatefulWidget {
   final List<String> friendChecklist;
   final String? friendName;
@@ -49,12 +50,18 @@ class FriendMain extends StatefulWidget {
 
 class _FriendMainState extends State<FriendMain> with SingleTickerProviderStateMixin {
   TabController? _tabController;
-  int _selectedIndex = 0;
+  int _selectedIndex =0 ;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _tabController!.index = 0;
+    _tabController!.addListener(() {
+      setState(() {
+        _selectedIndex = _tabController!.index;
+      });
+    });
   }
 
   @override
