@@ -116,7 +116,6 @@ class getList {
             break;
         }
       }
-      print("E: $E, I: $I , N: $N, S:$S, F:$F , T:$T, P:$P , J:$J");
       E = (E_num != 0) ? (E / E_num).toDouble() : 0;
       I = (I_num != 0) ? (I / I_num).toDouble() : 0;
       N = (N_num != 0) ? (N / N_num).toDouble() : 0;

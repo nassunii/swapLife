@@ -79,7 +79,6 @@ class _SliderWidgetState extends State<SliderWidget>{
   future: dataLoading,
   builder: (context, snapshot) {
   if (snapshot.connectionState == ConnectionState.done) {
-    print("mbti : $MBTI");
     return Column(
       children: [
         Row(

@@ -3,8 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
 
-
-
 //전체 class 예원 구현
 class AlertFriendDialog extends StatelessWidget {
   String? userid;
@@ -27,7 +25,6 @@ class AlertFriendDialog extends StatelessWidget {
       Map alarm_item = AlarmList[i];
       String timestamp = alarm_item['timestamp'].toDate().toString();
       int alarm_info = alarm_item['alarm_info'];
-      print('${alarm_item}, ${timestamp}. ${alarm_info}');
       DocumentSnapshot alarmdata = await db.collection('MyProfile')
           .doc(alarm_item['userID'])
           .get();
