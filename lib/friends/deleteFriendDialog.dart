@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//전체 class 예원 구현
 Future<dynamic> DeleteFriendDialog(BuildContext context, DocumentReference doc, DocumentReference frienddoc, List friendlist, String friendid, List myfriendlist, String userid){
   return showDialog(
     context: context,

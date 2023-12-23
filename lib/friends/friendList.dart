@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'KakaoTalkShare.dart';
-import 'package:swap_life/shared/todo_controller.dart';
 import 'FriendIcon.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 import 'package:swap_life/friends/deleteFriendDialog.dart';
 import 'package:swap_life/friends/FriendProfile.dart';
 
-
-
+//전체 class 예원 구현
 class FriendList extends StatefulWidget {
-  late TodoController controller;
   late BuildContext context;
-  FriendList(TodoController controller, BuildContext context){
-    this.controller = controller;
+  FriendList(BuildContext context){
     this.context = context;
   }
   @override
@@ -74,7 +70,7 @@ class _FriendListState extends State<FriendList> {
               //탭하면 친구 프로필창 나옴
               onTap: ()  {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FriendProfile(userid: userid, friendid: friendid, doc: doc, frienddoc: frienddoc, friendlist: friendlist, myfriendlist: myfriendlist, imageUrl: ImageUrl, NickName: NickName, MBTI: MBTI, intro: intro,controller: widget.controller,),
+                  MaterialPageRoute(builder: (context) => FriendProfile(userid: userid, friendid: friendid, doc: doc, frienddoc: frienddoc, friendlist: friendlist, myfriendlist: myfriendlist, imageUrl: ImageUrl, NickName: NickName, MBTI: MBTI, intro: intro,),
                 ),
               );
               },
@@ -106,24 +102,11 @@ class _FriendListState extends State<FriendList> {
           if (snapshot.connectionState == ConnectionState.waiting){
             return Center(child: CircularProgressIndicator());
           }else if(snapshot.data == null){
-            return returnContainer([Container()], widget.controller, widget.context);
+            return returnContainer([Container()],widget.context);
           }else{
             friendIconList = snapshot.data;
-            // Future.delayed(Duration.zero, (){
-            //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('되지롱')));
-            // });
 
-
-            // Future.delayed(Duration.zero, (){
-            //   showDialog(context: context, builder: (context){
-            //     return AlertDialog(
-            //       content: Text('위젯'),
-            //     );
-            //   });
-            // });
-
-
-            return returnContainer(friendIconList, widget.controller, widget.context);
+            return returnContainer(friendIconList,  widget.context);
           }
         }
     );
@@ -135,12 +118,10 @@ class _FriendListState extends State<FriendList> {
 //전체 Friend리스트 박스 컨테이너 (여기 안에 친구들이 추가됨)
 class returnContainer extends StatefulWidget {
   List<Widget>? friendIconList;
-  TodoController? controller;
   BuildContext? context;
 
-  returnContainer(List<Widget> friendIconList, TodoController controller, BuildContext context){
+  returnContainer(List<Widget> friendIconList, BuildContext context){
     this.friendIconList = friendIconList;
-    this.controller = controller;
     this.context = context;
   }
 
@@ -189,9 +170,8 @@ class _returnContainerState extends State<returnContainer> {
                           barrierDismissible: true,
                           context: context,
                           builder: (context){
-                            // final d = DynamicLink(controller: widget.controller);
-                            // d.buildDynamicLink();
-                            return KakaoShareButton(controller: widget.controller!);
+
+                            return KakaoShareButton();
                           });
                     },
                     child: Container(

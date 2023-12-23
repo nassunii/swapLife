@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
-import 'package:swap_life/shared/todo_controller.dart';
 import 'package:swap_life/friends/friendList.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
-//모든 class 예선 작성
+//전체 class 예선 작성
 List<TodoItem> todoList = [];
 
 //Todo list에 들어갈 항목,mbti,완료상태
@@ -21,8 +20,6 @@ class TodoItem {
 }
 
 class TodoScreen extends StatefulWidget {
-  final TodoController controller;
-  TodoScreen({required this.controller});
   @override
   _TodoScreenState createState() => _TodoScreenState();
 }
@@ -51,7 +48,7 @@ class _TodoScreenState extends State<TodoScreen> {
       body: Column(
         children: [
           SizedBox(height: 10),
-          FriendList(widget.controller, context),
+          FriendList( context),
           SizedBox(height: 25),
           //checkList
           Text("< My CheckList >", style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold),),
@@ -77,7 +74,6 @@ class _TodoScreenState extends State<TodoScreen> {
                           ),
                         ),
                       ),
-
                       onChanged: (value){}
                   ),
                 ),
@@ -184,6 +180,7 @@ class _TodoScreenState extends State<TodoScreen> {
       }
     });
   }
+
   //초기에 사용자ID=null 상황을 방지하기 위해 userId받아오는 함수
   Future<String> getOrCreateDefaultUserId() async {
     kakao.User? user = await kakao.UserApi.instance.me();
@@ -285,8 +282,6 @@ class _TodoScreenState extends State<TodoScreen> {
     });
   }
 }
-
-
 
 class DropdownButtonWidget extends StatefulWidget {
   @override

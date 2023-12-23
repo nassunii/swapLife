@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'AddAlarm.dart';
 
 
-
+//전체 class 예원 구현
 class FriendListManager {
   final db = FirebaseFirestore.instance;
   String? userid_img;

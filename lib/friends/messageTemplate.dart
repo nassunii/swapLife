@@ -1,5 +1,6 @@
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_template.dart';
 
+//전체 class 예원 구현
 TextTemplate createTemplate(Uri link, String nickname){
     final TextTemplate Template = TextTemplate(
         buttonTitle: '친구 요청 수락',

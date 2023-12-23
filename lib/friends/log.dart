@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 
+//전체 class 예원 구현
 class Log{
   static void i(BuildContext context, String tag, String msg, [Object? error]){
     var message = (error == null) ? msg : "${msg}\n${error}";

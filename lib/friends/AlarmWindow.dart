@@ -5,13 +5,12 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
 
 
-class AlertFriend extends StatelessWidget {
+//전체 class 예원 구현
+class AlertFriendDialog extends StatelessWidget {
   String? userid;
   kakao.User? user;
   final db = FirebaseFirestore.instance;
 
-
-  AlertFriend({this.userid});
 
   Future<List<Widget>> addAlarm() async {
     user = await kakao.UserApi.instance.me();

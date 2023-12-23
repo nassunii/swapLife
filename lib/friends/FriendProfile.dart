@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:swap_life/friends/deleteFriendDialog.dart';
-import 'package:swap_life/shared/todo_controller.dart';
 import 'package:swap_life/Body/friendBody.dart';
 import 'AddAlarm.dart';
 
 
+//전체 class 예선 작성
+//variable연결 - 예원
 class FriendProfile extends StatefulWidget {
   late String? imageUrl;
   late String? NickName;
@@ -19,7 +20,6 @@ class FriendProfile extends StatefulWidget {
   late List? friendlist;
   late List? myfriendlist;
   late List<String>? friendChecklist;
-  final TodoController controller;
   final int? exist;
 
   FriendProfile({
@@ -34,7 +34,6 @@ class FriendProfile extends StatefulWidget {
     this.NickName,
     this.MBTI,
     this.intro,
-    required this.controller,
     this.exist,
   }) : super(key: key);
 
@@ -72,7 +71,6 @@ class _FriendProfile extends State<FriendProfile> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 20,),
             Row(
               children: [
                 SizedBox(width: 30,),
@@ -86,14 +84,14 @@ class _FriendProfile extends State<FriendProfile> {
                   radius: 70,
                   backgroundImage: NetworkImage(widget.imageUrl!),
                 ),
-                SizedBox(width: 50,),
+                SizedBox(width: 30,),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     (widget.NickName == 'null') ? Text("  ") : Text('${widget.NickName}', style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold)),
                     SizedBox(height: 10,),
                     (widget.MBTI == 'null') ? Text("MBTI") : Text('${widget.MBTI}', style: TextStyle(fontSize: 22),),
-                    (widget.MBTI == 'null') ? Text("상태메시지") : Text('${widget.intro}', style: TextStyle(fontSize: 20),)
+                    (widget.MBTI == 'null') ? Text("상태메시지") : Text('${widget.intro}', style: TextStyle(fontSize: 17),)
                   ],
                 ),
               ],
@@ -131,7 +129,6 @@ class _FriendProfile extends State<FriendProfile> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => FriendMain(
-                                    controller: widget.controller,
                                     friendChecklist: friendChecklist!,
                                     friendName: widget.NickName!,
                                     friendid: widget.friendid!,
@@ -154,7 +151,6 @@ class _FriendProfile extends State<FriendProfile> {
                       MaterialPageRoute(
                         builder: (context) =>
                             FriendMain(
-                              controller: widget.controller,
                               friendChecklist: friendChecklist!,
                               friendName: widget.NickName!,
                               friendid: widget.friendid!,
