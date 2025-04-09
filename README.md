@@ -19,7 +19,8 @@ MBTI is often used to define one's identity, but test results can vary depending
 - **Kakao Login** for simple and social onboarding
 
 ## 📸 Screenshots
-*(Add some app screenshots here!)*
+![image](https://github.com/user-attachments/assets/ad0266fb-d0b5-498d-ae07-2f43bd68f8a6)
+
 
 ## 🚀 Getting Started
 1. Clone the repo  
