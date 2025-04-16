@@ -1,36 +1,21 @@
-# SwapLife
+# swap_life
 
-SwapLife is a mobile application that lets users experience daily routines based on different MBTI personality types. By "swapping lives" with friends for a day, users can explore how their behavior or mood might shift when living like a different MBTI — encouraging self-reflection, empathy, and new perspectives on identity.
-
-## 🔍 Key Features
-- Create and customize your MBTI-based daily checklist
-- Swap checklists with friends to experience their routines
-- Analyze how your MBTI may change based on swapped behaviors
-- Real-time syncing and data sharing through Firebase
-- Simple and intuitive UI designed with Figma
-
-## 💡 Motivation
-MBTI is often used to define one's identity, but test results can vary depending on context. SwapLife addresses this by giving users the opportunity to *live out* different MBTI routines instead of just imagining them — breaking away from monotonous routines and encouraging fresh emotional insights.
-
-## 🛠 Tech Stack
-- **Flutter** for cross-platform mobile development (iOS & Android)
-- **Firebase Firestore** for real-time database and syncing
-- **Figma** for UI/UX design
-- **Kakao Login** for simple and social onboarding
-
-## 📸 Screenshots
-![image](https://github.com/user-attachments/assets/ad0266fb-d0b5-498d-ae07-2f43bd68f8a6)
+MyProfile
 
 
-## 🚀 Getting Started
-1. Clone the repo  
-   `git clone https://github.com/nassunii/swapLife.git`
-2. Run `flutter pub get`  
-3. Launch on an emulator or device using `flutter run`
+## 수정 필요
 
-## 👩‍💻 Developed By
-- Yewon Kim  
-- Jinyoung Kim  
-- Yesun Hong  
-(Team 1, Fall 2023 Project)
+1. My MBTI Report 버튼 작동
+2. 프로필 사진 오류수정
+   CircleAvatar(
+                radius: 80,
+                backgroundImage: _imageFile != null
+                    ? imageWidget(_imageFile!)
+                    : AssetImage('assets/profile.png') ,
+              ),
+3. 색상 변경
 
+
+12/3 예원 수정
+
+1. main.dart에서 앱 처음 실행시 selected_index : 2(프로필 페이지)로 설정함(그래야할 것 같은데 아니라면 말씀부탁드려요)
